@@ -10,7 +10,7 @@
   "files": [
     "lib/*"
   ],
-  "repository": "git@github.com:prolincur/date-utils.git",
+  "repository": "https://github.com/prolincur/date-utils.git",
   "author": "Sourabh Soni <https://prolincur.com>",
   "license": "MIT",
   "private": false,
