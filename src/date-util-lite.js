@@ -75,6 +75,8 @@ const formatters = {
 }
 
 class DateUtil {
+  constructor() {
+  }
   /**
    * Few predefined date formats
    */
@@ -85,7 +87,7 @@ class DateUtil {
    * @param {Date} date
    * @param {ISO8601, AMZ_ISO8601, YYYYMMDD, YYYYMMDDHHMMSSMMM} format
    */
-  static dateToString(date, format) {
+  dateToString(date, format = DateFormat['YYYY-MM-DD']) {
     return formatters[format](date)
   }
 
@@ -94,8 +96,8 @@ class DateUtil {
    *
    * @param {e.g. DateFormat.AMZ_ISO8601} format
    */
-  static getCurrentDateString(format) {
-    return DateUtil.dateToString(new Date(), format)
+  getCurrentDateString(format) {
+    return this.dateToString(new Date(), format)
   }
 
   /**
@@ -105,7 +107,7 @@ class DateUtil {
    * @param {Date|number|string} date Unix epoch, Javascript datetime
    * @returns Excel serial number of datetime
    */
-  static toSerialValue(date) {
+  toSerialValue(date) {
     if (!date) return 0
     return formatters[DateFormat.EXCEL_SERIAL](new Date(date))
   }
@@ -115,12 +117,13 @@ class DateUtil {
    * @param {*} serial Excel serial number of datetime
    * @returns Date object of datetime
    */
-  static fromSerialValue(serial) {
+  fromSerialValue(serial) {
     if (!serial) return 0
     const epoch = (serial - 25569) * 86400000
-
+    const secs = epoch % 100
+    const ms = epoch - secs * 100
     const date = new Date(0)
-    date.setUTCSeconds(epoch)
+    date.setUTCSeconds(secs, ms)
     return date
   }
 
@@ -128,9 +131,9 @@ class DateUtil {
    * @param {Date|number|string|moment} date Unix epoch, Javascript datetime or moment
    * @returns Excel serial number of days since 1900-01-00T00:00:00Z
    */
-  static toSerialDays(date) {
+  toSerialDays(date) {
     if (!date) return 0
-    const serial = DateUtil.toSerialValue(date)
+    const serial = this.toSerialValue(date)
     // Keep only days (remove values after decimal)
     return Math.floor(serial)
   }
@@ -139,17 +142,17 @@ class DateUtil {
    * @param serial Excel serial number of days since 1900-01-00T00:00:00Z
    * @returns moment
    */
-  static fromSerialDays(serial) {
+  fromSerialDays(serial) {
     if (!serial) return 0
-    return DateUtil.fromSerialValue(Math.floor(serial))
+    return this.fromSerialValue(Math.floor(serial))
   }
 
   /**
    * Should the specified date be treated a number rather than date
    * @param {Date|number|string|moment} date Unix epoch, Javascript datetime or moment
    */
-  static shouldNumberData = (date) => {
-    return DateUtil.toSerialDays(date) < DATE_SERIAL_NUMBER_CUTOFF
+  shouldNumberData (date) {
+    return this.toSerialDays(date) < DATE_SERIAL_NUMBER_CUTOFF
   }
 }
 

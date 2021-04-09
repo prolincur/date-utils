@@ -9,13 +9,12 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        'date-utils-lite': './src/date-util-lite.js',
-        'date-utils': './src/date-util-moment.js'
+        'lite': './src/date-util-lite.js',
+        'index': './src/date-util-moment.js'
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'lib'),
-        library: 'date-utils',
         libraryTarget: 'umd',
         globalObject: 'typeof self !== \'undefined\' ? self : this'
     },

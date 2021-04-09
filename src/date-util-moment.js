@@ -7,11 +7,18 @@ import { DateUtil as SimpleDateUtil } from './date-util-lite'
  * @author Sourabh Soni <https://prolincur.com>
  */
 class DateUtil extends SimpleDateUtil {
+  constructor() {
+    super()
+  }
+  /**
+   * Few predefined date formats
+   */
+  static DateFormat = SimpleDateUtil.DateFormat
   /**
    * Checks whether object is a Date or moment object
    * @returns true if object is Date or moment, otherwise false
    */
-  static isDateOrMoment(date) {
+  isDateOrMoment(date) {
     return moment.isMoment(date) || date instanceof Date
   }
 
@@ -19,7 +26,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date Date or moment
    * @returns moment object or null
    */
-  static getMoment(date) {
+  getMoment(date) {
     if (!date) return null
 
     return moment.isMoment(date) ? date : moment(new Date(date))
@@ -31,7 +38,7 @@ class DateUtil extends SimpleDateUtil {
    * @see https://momentjs.com/docs/#/manipulating/start-of/
    * @returns Start
    */
-  static startOf(date, type) {
+  startOf(date, type) {
     if (!date) return null
     return moment(date).startOf(type)
   }
@@ -42,7 +49,7 @@ class DateUtil extends SimpleDateUtil {
    * @see https://momentjs.com/docs/#/manipulating/end-of/
    * @returns End
    */
-  static endOf(date, type) {
+  endOf(date, type) {
     if (!date) return null
     return moment(date).endOf(type)
   }
@@ -57,7 +64,7 @@ class DateUtil extends SimpleDateUtil {
    * @see https://momentjs.com/docs/#/get-set/year/
    * @returns End
    */
-  static ofYear(date, type) {
+  ofYear(date, type) {
     if (!date) return null
     switch (type) {
       case 'week':
@@ -80,7 +87,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date2 Date or moment
    * @returns true if date1 are equal to date2
    */
-  static isSame(date1, date2) {
+  isSame(date1, date2) {
     if (!date1 && !date2) return true
     return DateUtil.getMoment(date1)?.isSame(DateUtil.getMoment(date2)) || false
   }
@@ -90,7 +97,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date2 Date or moment
    * @returns true if date1 is before date2
    */
-  static isBefore(date1, date2) {
+  isBefore(date1, date2) {
     return DateUtil.getMoment(date1)?.isBefore(DateUtil.getMoment(date2)) || false
   }
 
@@ -99,7 +106,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date2 Date or moment
    * @returns true if date1 is after date2
    */
-  static isAfter(date1, date2) {
+  isAfter(date1, date2) {
     return DateUtil.getMoment(date1)?.isAfter(DateUtil.getMoment(date2)) || false
   }
 
@@ -109,7 +116,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date2 Date or moment
    * @returns minimum of two dates
    */
-  static min(date1, date2) {
+  min(date1, date2) {
     date1 = DateUtil.getMoment(date1)
     date2 = DateUtil.getMoment(date2)
     if (!date1) return date2
@@ -124,7 +131,7 @@ class DateUtil extends SimpleDateUtil {
    * @param date2 Date or moment
    * @returns maxiumum of two dates
    */
-  static max(date1, date2) {
+  max(date1, date2) {
     date1 = DateUtil.getMoment(date1)
     date2 = DateUtil.getMoment(date2)
     if (!date1) return date2
@@ -140,7 +147,7 @@ class DateUtil extends SimpleDateUtil {
    * @param {Date|number|string|moment} date Unix epoch, Javascript datetime or moment
    * @returns Excel serial number of datetime
    */
-  static toSerialValue(date) {
+  toSerialValue(date) {
     if (!date) return 0
     const epoch = moment.isMoment(date) ? date.valueOf() : new Date(date).getTime()
     return epoch / 86400000 + 25569
@@ -151,7 +158,7 @@ class DateUtil extends SimpleDateUtil {
    * @param {*} serial Excel serial number of datetime
    * @returns Moment object of datetime
    */
-  static fromSerialValue(serial) {
+  fromSerialValue(serial) {
     if (!serial) return 0
     const epoch = (serial - 25569) * 86400000
     return moment(epoch)

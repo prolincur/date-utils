@@ -4,16 +4,16 @@ A collection utility methods for parsing (including excel serial date), formatti
 
 #### Install
 ```
-yarn add date-utils
+yarn add @prolincur/date-utils
 ```
 or
 ```
-npm i date-utils
+npm i @prolincur/date-utils
 ```
 
 #### Usage
 ```
-import { DateUtil } from 'date-utils-lite' // or ''date-utils'
+import { DateUtil } from '@prolincur/date-utils' // or '@prolincur/date-utils/lite'
 
 ```
 ### Author
