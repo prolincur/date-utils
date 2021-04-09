@@ -15,6 +15,8 @@ npm i @prolincur/date-utils
 ```
 import { DateUtil } from '@prolincur/date-utils' // or '@prolincur/date-utils/lite'
 
+const util = new DateUtil()
+
 ```
 ### Author
 
