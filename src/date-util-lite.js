@@ -74,6 +74,10 @@ const formatters = {
   [DateFormat.EXCEL_SERIAL]: (date) => date.getTime() / 86400000 + 25569,
 }
 
+/**
+ * Minimal version of DateUtil with no external dependencies.
+ * 
+ */
 class DateUtil {
   constructor() {
   }

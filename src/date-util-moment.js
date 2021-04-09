@@ -1,10 +1,14 @@
+/*
+ * Copyright (c) 2020 Prolincur Technologies LLP.
+ * All Rights Reserved.
+ */
+
 import moment from 'moment'
 import { DateUtil as SimpleDateUtil } from './date-util-lite'
 
 /**
- * An utility class which provide method to query and manipulate date.
- * @namespace DateUtil
- * @author Sourabh Soni <https://prolincur.com>
+ * Extends lite version of DateUtil using moment.
+ * 
  */
 class DateUtil extends SimpleDateUtil {
   constructor() {
