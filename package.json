@@ -1,0 +1,65 @@
+{
+  "name": "date-utils",
+  "version": "1.0.0",
+  "description": "A collection utility methods for parsing (including excel serial date), formatting and manipulating dates.",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
+  "repository": "git@github.com:prolincur/date-utils.git",
+  "author": "Sourabh Soni <https://prolincur.com>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "date",
+    "time",
+    "format",
+    "excel date",
+    "moment",
+    "parse",
+    "ISO 8601",
+    "AMZ ISO8601"
+  ],
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ],
+    "presets": [
+      [
+        "@babel/preset-env"
+      ],
+      "minify"
+    ]
+  },
+  "scripts": {
+    "build-dev": "webpack --mode development webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "prettier": "prettier src/**/*.{js,jsx} --write",
+    "lint": "eslint --fix --ext .js,.jsx src"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "babel-preset-minify": "^0.5.1",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.2.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^5.7.3"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
