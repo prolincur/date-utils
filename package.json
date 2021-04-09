@@ -1,5 +1,5 @@
 {
-  "name": "@prolincur/date-utils",
+  "name": "prolincur-date-utils",
   "version": "1.0.0",
   "description": "A collection utility methods for parsing (including excel serial date), formatting and manipulating dates.",
   "main": "lib/index.js",
